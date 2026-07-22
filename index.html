@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NO KINGS — Prototipo · Alicubi</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="brand">
+      <img src="assets/ALICUBI_logo_big.png" alt="Alicubi">
+      <div>
+        <p class="eyebrow">FUTURE CREATORS · ALICUBI</p>
+        <h1>NO KINGS — Prototipo</h1>
+        <p class="subtitle">Un gioco per prendere parola, ascoltare e attraversare insieme le domande.</p>
+      </div>
+    </header>
+
+    <section id="setupStep" class="panel">
+      <span class="step">1 · Impostazioni</span>
+      <h2>Prepariamo il gioco</h2>
+
+      <label for="numPlayers">Quanti giocatori partecipano?</label>
+      <input id="numPlayers" type="number" min="2" max="15" value="2">
+
+      <label for="gameType">Tipo di gioco</label>
+      <select id="gameType">
+        <option value="questions">Solo domande</option>
+        <option value="answers">Scrivi le risposte</option>
+      </select>
+      <p class="help">Solo nella modalità “Scrivi le risposte” verrà creato il riepilogo finale.</p>
+
+      <label for="drawMode">Scelta della categoria</label>
+      <select id="drawMode">
+        <option value="manual">La scegliamo a ogni turno</option>
+        <option value="random">La sceglie il gioco</option>
+      </select>
+
+      <button id="continueButton" class="primary">Continua</button>
+      <p id="setupError" class="error" aria-live="polite"></p>
+    </section>
+
+    <section id="namesStep" class="panel hidden">
+      <span class="step">2 · Giocatori</span>
+      <h2>Come vi chiamate?</h2>
+      <div id="namesContainer" class="names-grid"></div>
+      <div class="button-row">
+        <button id="backButton" class="secondary">Indietro</button>
+        <button id="startButton" class="primary">Inizia il gioco</button>
+      </div>
+      <p id="namesError" class="error" aria-live="polite"></p>
+    </section>
+
+    <section id="gameStep" class="panel game-panel hidden">
+      <div class="turn-header">
+        <div>
+          <p id="roundLabel" class="eyebrow"></p>
+          <h2 id="turnPlayer"></h2>
+        </div>
+        <span id="turnCounter" class="counter"></span>
+      </div>
+
+      <div id="categoryArea" class="category-area hidden">
+        <label for="categorySelect">Scegli la categoria per questo turno</label>
+        <select id="categorySelect"></select>
+        <p id="categoryHelp" class="help"></p>
+      </div>
+
+      <article id="questionCard" class="question-card" data-category="neutral">
+        <p id="categoryBadge" class="category-badge"></p>
+        <p id="questionText" class="question-text"></p>
+      </article>
+
+      <div id="answerArea" class="answer-area hidden">
+        <label for="answerBox">La tua risposta</label>
+        <textarea id="answerBox" rows="5" placeholder="Scrivi qui la risposta..."></textarea>
+        <p id="answerError" class="error" aria-live="polite"></p>
+      </div>
+
+      <div class="button-row">
+        <button id="mainActionButton" class="primary"></button>
+        <button id="endGameButton" class="danger hidden">Termina il gioco</button>
+      </div>
+    </section>
+
+    <section id="summaryStep" class="panel hidden">
+      <span class="step">Riepilogo</span>
+      <h2>Grazie per aver giocato</h2>
+      <p>Il file di testo con le risposte è stato scaricato sul dispositivo.</p>
+      <div id="summaryBox" class="summary-box"></div>
+      <button id="restartButton" class="primary">Nuova partita</button>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

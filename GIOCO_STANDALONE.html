@@ -1,0 +1,1805 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NO KINGS — Prototipo · Alicubi</title>
+  <style>
+:root {
+  --ink: #171717;
+  --muted: #686868;
+  --paper: #f5f0e6;
+  --panel: #fffdf8;
+  --line: #cfc7b8;
+  --accent: #e2a900;
+  --accent-dark: #855900;
+  --danger: #a7392d;
+  --shadow: 0 18px 55px rgba(25, 25, 25, .13);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(circle at 16% 9%, rgba(226,169,0,.16), transparent 27rem),
+    repeating-linear-gradient(0deg, rgba(30,25,18,.018) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(30,25,18,.012) 0 1px, transparent 1px 5px);
+}
+
+button, input, select, textarea { font: inherit; }
+
+.app-shell {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 36px 0 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 26px;
+}
+
+.brand img {
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
+}
+
+h1, h2, p { margin-top: 0; }
+h1 {
+  margin-bottom: 7px;
+  font-size: clamp(2rem, 5vw, 3.65rem);
+  line-height: .98;
+  letter-spacing: -.035em;
+}
+h2 { margin-bottom: 20px; font-size: clamp(1.55rem, 3vw, 2.15rem); }
+.subtitle, .help { color: var(--muted); }
+.eyebrow, .step {
+  display: block;
+  margin-bottom: 7px;
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.panel {
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 20px 25px 22px 18px;
+  background:
+    repeating-linear-gradient(0deg, rgba(33,28,20,.016) 0 1px, transparent 1px 5px),
+    rgba(255,253,248,.96);
+  box-shadow: var(--shadow);
+}
+
+.hidden { display: none !important; }
+
+label {
+  display: block;
+  margin: 18px 0 7px;
+  font-weight: 780;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid #bdb4a5;
+  border-radius: 11px;
+  padding: 13px 14px;
+  background: #fffefa;
+  color: var(--ink);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: 3px solid rgba(226,169,0,.24);
+  border-color: var(--accent-dark);
+}
+
+textarea { resize: vertical; min-height: 120px; }
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 20px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+button:disabled { opacity: .48; cursor: not-allowed; }
+
+.primary { background: var(--ink); color: white; }
+.primary:hover { background: #353535; }
+.secondary { background: #e6e0d4; color: var(--ink); }
+.danger { background: var(--danger); color: white; }
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.names-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.names-grid label { margin-top: 0; }
+
+.turn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.counter {
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #eae5db;
+  font-weight: 850;
+}
+
+.category-area {
+  margin-bottom: 18px;
+  padding: 15px 18px;
+  border: 1px dashed #bbb1a1;
+  border-radius: 14px;
+  background: #f3eee4;
+}
+
+.question-card {
+  --category-main: #e2a900;
+  --category-accent: #171717;
+  --category-soft: #fffdf7;
+  --category-ink: #171717;
+  position: relative;
+  isolation: isolate;
+  min-height: 250px;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+  padding: clamp(30px, 6vw, 58px);
+  border: 3px solid var(--category-ink);
+  border-radius: 18px 23px 17px 21px;
+  background-color: var(--category-soft);
+  background-image:
+    radial-gradient(circle at 13% 18%, color-mix(in srgb, var(--category-main) 22%, transparent), transparent 27%),
+    repeating-linear-gradient(0deg, rgba(20,20,20,.026) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, rgba(20,20,20,.018) 0 1px, transparent 1px 7px);
+  box-shadow: 7px 8px 0 rgba(20,20,20,.12);
+  text-align: center;
+}
+
+.question-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -18px;
+  left: -34px;
+  width: 48%;
+  height: 92px;
+  background: var(--category-main);
+  opacity: .88;
+  transform: rotate(-4deg);
+  clip-path: polygon(0 12%, 94% 0, 100% 72%, 5% 100%);
+}
+
+.question-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -22px;
+  bottom: -28px;
+  width: 210px;
+  height: 110px;
+  opacity: .24;
+  background:
+    repeating-linear-gradient(135deg, var(--category-accent) 0 3px, transparent 3px 10px);
+  transform: rotate(-7deg);
+}
+
+.category-badge {
+  margin-bottom: 18px;
+  max-width: 100%;
+  padding: 8px 13px;
+  border: 2px solid var(--category-ink);
+  border-radius: 4px 9px 5px 7px;
+  background: var(--category-main);
+  color: var(--category-badge-ink, #111);
+  box-shadow: 3px 3px 0 var(--category-accent);
+  font-size: clamp(.72rem, 2vw, .84rem);
+  font-weight: 950;
+  letter-spacing: .075em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  transform: rotate(-.8deg);
+}
+
+.question-text {
+  max-width: 700px;
+  margin-bottom: 0;
+  font-size: clamp(1.48rem, 4vw, 2.58rem);
+  line-height: 1.18;
+  font-weight: 860;
+  text-wrap: balance;
+}
+
+.question-card[data-category="neutral"] {
+  --category-main: #e2a900;
+  --category-accent: #171717;
+  --category-soft: #fffdf7;
+  --category-ink: #171717;
+}
+
+.question-card[data-category="fatiche"] {
+  --category-main: #d7a514;
+  --category-accent: #d95118;
+  --category-soft: #f4ead5;
+  --category-ink: #121212;
+}
+
+.question-card[data-category="strategie"] {
+  --category-main: #d83f78;
+  --category-accent: #dfba00;
+  --category-soft: #f5e3e8;
+  --category-ink: #171717;
+}
+
+.question-card[data-category="desideri-comunita"] {
+  --category-main: #79b91d;
+  --category-accent: #ed0c72;
+  --category-soft: #eef0dc;
+  --category-ink: #143e25;
+}
+
+.question-card[data-category="parole-aprono-chiudono"] {
+  --category-main: #3975bd;
+  --category-accent: #9fc7eb;
+  --category-soft: #eaf1f7;
+  --category-ink: #0e2746;
+  --category-badge-ink: #fff;
+}
+
+.question-card[data-category="potere"] {
+  --category-main: #dc430e;
+  --category-accent: #d9de00;
+  --category-soft: #f1e4cd;
+  --category-ink: #171717;
+}
+
+.question-card[data-category="voce-ascolto"] {
+  --category-main: #9272b7;
+  --category-accent: #eb6a17;
+  --category-soft: #f0eaf2;
+  --category-ink: #3b2a61;
+}
+
+.answer-area { margin-top: 20px; }
+
+.error {
+  min-height: 1.25rem;
+  margin: 8px 0 0;
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.summary-box {
+  display: grid;
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.summary-entry {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-left: 7px solid var(--summary-accent, #171717);
+  border-radius: 14px;
+  background: #fffefa;
+}
+
+.summary-entry[data-category="fatiche"] { --summary-accent: #d7a514; }
+.summary-entry[data-category="strategie"] { --summary-accent: #d83f78; }
+.summary-entry[data-category="desideri-comunita"] { --summary-accent: #79b91d; }
+.summary-entry[data-category="parole-aprono-chiudono"] { --summary-accent: #3975bd; }
+.summary-entry[data-category="potere"] { --summary-accent: #dc430e; }
+.summary-entry[data-category="voce-ascolto"] { --summary-accent: #9272b7; }
+.summary-entry h3 { margin: 0 0 8px; }
+
+@media (max-width: 620px) {
+  .brand { align-items: flex-start; }
+  .brand img { width: 72px; height: 72px; }
+  .names-grid { grid-template-columns: 1fr; }
+  .turn-header { display: block; }
+  .counter { display: inline-block; margin-bottom: 14px; }
+  .button-row button { width: 100%; }
+  .question-card { min-height: 230px; padding: 30px 22px; }
+}
+
+</style>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="brand">
+      <img src="data:image/png;base64,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" alt="Alicubi">
+      <div>
+        <p class="eyebrow">FUTURE CREATORS · ALICUBI</p>
+        <h1>NO KINGS — Prototipo</h1>
+        <p class="subtitle">Un gioco per prendere parola, ascoltare e attraversare insieme le domande.</p>
+      </div>
+    </header>
+
+    <section id="setupStep" class="panel">
+      <span class="step">1 · Impostazioni</span>
+      <h2>Prepariamo il gioco</h2>
+
+      <label for="numPlayers">Quanti giocatori partecipano?</label>
+      <input id="numPlayers" type="number" min="2" max="15" value="2">
+
+      <label for="gameType">Tipo di gioco</label>
+      <select id="gameType">
+        <option value="questions">Solo domande</option>
+        <option value="answers">Scrivi le risposte</option>
+      </select>
+      <p class="help">Solo nella modalità “Scrivi le risposte” verrà creato il riepilogo finale.</p>
+
+      <label for="drawMode">Scelta della categoria</label>
+      <select id="drawMode">
+        <option value="manual">La scegliamo a ogni turno</option>
+        <option value="random">La sceglie il gioco</option>
+      </select>
+
+      <button id="continueButton" class="primary">Continua</button>
+      <p id="setupError" class="error" aria-live="polite"></p>
+    </section>
+
+    <section id="namesStep" class="panel hidden">
+      <span class="step">2 · Giocatori</span>
+      <h2>Come vi chiamate?</h2>
+      <div id="namesContainer" class="names-grid"></div>
+      <div class="button-row">
+        <button id="backButton" class="secondary">Indietro</button>
+        <button id="startButton" class="primary">Inizia il gioco</button>
+      </div>
+      <p id="namesError" class="error" aria-live="polite"></p>
+    </section>
+
+    <section id="gameStep" class="panel game-panel hidden">
+      <div class="turn-header">
+        <div>
+          <p id="roundLabel" class="eyebrow"></p>
+          <h2 id="turnPlayer"></h2>
+        </div>
+        <span id="turnCounter" class="counter"></span>
+      </div>
+
+      <div id="categoryArea" class="category-area hidden">
+        <label for="categorySelect">Scegli la categoria per questo turno</label>
+        <select id="categorySelect"></select>
+        <p id="categoryHelp" class="help"></p>
+      </div>
+
+      <article id="questionCard" class="question-card" data-category="neutral">
+        <p id="categoryBadge" class="category-badge"></p>
+        <p id="questionText" class="question-text"></p>
+      </article>
+
+      <div id="answerArea" class="answer-area hidden">
+        <label for="answerBox">La tua risposta</label>
+        <textarea id="answerBox" rows="5" placeholder="Scrivi qui la risposta..."></textarea>
+        <p id="answerError" class="error" aria-live="polite"></p>
+      </div>
+
+      <div class="button-row">
+        <button id="mainActionButton" class="primary"></button>
+        <button id="endGameButton" class="danger hidden">Termina il gioco</button>
+      </div>
+    </section>
+
+    <section id="summaryStep" class="panel hidden">
+      <span class="step">Riepilogo</span>
+      <h2>Grazie per aver giocato</h2>
+      <p>Il file di testo con le risposte è stato scaricato sul dispositivo.</p>
+      <div id="summaryBox" class="summary-box"></div>
+      <button id="restartButton" class="primary">Nuova partita</button>
+    </section>
+  </main>
+
+  <script>
+window.NO_KINGS_CATEGORIES = {
+  "fatiche": {
+    "label": "Fatiche",
+    "sourceLabel": "Fatiche",
+    "guideline": "FATICA"
+  },
+  "strategie": {
+    "label": "Strategie",
+    "sourceLabel": "Strategie",
+    "guideline": "STRATEGIA"
+  },
+  "desideri-comunita": {
+    "label": "Desideri / Comunità",
+    "sourceLabel": "Desideri / Comunità",
+    "guideline": "DESIDERIO / COMUNITÀ"
+  },
+  "parole-aprono-chiudono": {
+    "label": "Parole che aprono / parole che chiudono",
+    "sourceLabel": "Parole che aprono / parole che chiudono",
+    "guideline": "PAROLA CHE APRE/CHIUDE"
+  },
+  "potere": {
+    "label": "Piccoli Re / Potere",
+    "sourceLabel": "Piccoli Re / Potere",
+    "guideline": "POTERE"
+  },
+  "voce-ascolto": {
+    "label": "Voce e ascolto",
+    "sourceLabel": "Voce e ascolto",
+    "guideline": "VOCE E ASCOLTO"
+  }
+};
+
+window.QUESTION_DATABASE = {
+  "fatiche": [
+    {
+      "id": "NK-011",
+      "text": "Cosa provi quando ti senti giudicato?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 12,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-018",
+      "text": "Ti è mai successo di tacere per non sembrare maleducato?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 19,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-024",
+      "text": "Quando fai fatica a prendere parola?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 25,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-032",
+      "text": "Ti è mai capitato di fare una cosa solo perché la faceva il gruppo?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 33,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-033",
+      "text": "Quando hai parlato di un argomento scomodo ai tuoi?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 34,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-035",
+      "text": "Quando ti è successo di dover chiedere scusa a qualcuno ma di non riuscirci?  ",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 36,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-051",
+      "text": "Quali sono i motivi che ti bloccano nel prendere parola?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 52,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-068",
+      "text": "Perché a volte non diciamo quello che pensiamo?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 69,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-072",
+      "text": "Durante un gioco tutti parlano insieme e nessuno ti lascia finire una frase. Che cosa fai?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 73,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-073",
+      "text": "Un amico racconta un tuo segreto senza chiederti il permesso. Che cosa fai?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 74,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-074",
+      "text": "Un amico insiste perché tu faccia una cosa che non ti convince. Che cosa dici?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 75,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-075",
+      "text": "Durante un lavoro di gruppo una tua idea viene ignorata. Che cosa fai?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 76,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-076",
+      "text": "Hai cambiato idea su una cosa importante, ma temi che gli altri ti giudichino. Che cosa fai?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 77,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-077",
+      "text": "Devi scusarti, ma non sai come. Che cosa fai?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 78,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-095",
+      "text": "Che cosa provi quando qualcuno ti insulta ?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 96,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-099",
+      "text": "fai fatica a cambiare idea?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 100,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-100",
+      "text": "cosa non ti permette di cambiare idea?",
+      "category": "Fatiche",
+      "categoryKey": "fatiche",
+      "sourceRow": 101,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    }
+  ],
+  "strategie": [
+    {
+      "id": "NK-001",
+      "text": "Un compagno viene preso in giro. Come lo aiuti?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 2,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-002",
+      "text": "Che cosa ti aiuta quando sei triste o in difficoltà?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 3,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-006",
+      "text": "Che cosa fai quando vedi un tuo amico a disagio o in difficolta?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 7,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-010",
+      "text": "Ti è mai capitato di aiutare un amico a sbloccarsi su una fatica?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 11,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-012",
+      "text": "Chi o cosa ti aiuta quando provi imbarazzo?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 13,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-014",
+      "text": "Quando davanti hai una sfida come la affronti?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 15,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-015",
+      "text": "Cosa fai per farti rispettare?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 16,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-016",
+      "text": "Come ti sfoghi quando sei arrabbiato?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 17,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-017",
+      "text": "Immagina di essere al parco con degli amici che prendono in giro qualcuno. Cosa fai e perche?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 18,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-019",
+      "text": "Sei in classe ed un tuo compagno inizia a piangere. Cosa fai?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 20,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-023",
+      "text": "Ti scrive un numero sconosciuto su WhatsApp. Sei spaventato. Come reagisci?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 24,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-026",
+      "text": "Ti ritrovi la chat di classe piena di sticker inutili. Cosa fai?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 27,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-027",
+      "text": "Cosa faresti se vedessi un amico preso in giro davanti ai tuoi occhi? (e a tutti?)",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 28,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-028",
+      "text": "Due tuoi amici hanno litigato e non si parlano più. cosa fai?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 29,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-029",
+      "text": "Che superpotere vorresti avere nel caso ti sentissi umiliato?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 30,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-030",
+      "text": "Cosa fai se qualcuno ti offende in una chat di gruppo?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 31,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-036",
+      "text": "Quando sei con amici ti viene uno scatto di rabbia. Cosa fai?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 37,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-037",
+      "text": "Ti è mai capitato di dover gestire una situazione complicata?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 38,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-038",
+      "text": "Hai sbagliato e ti senti in colpa. come risolvi la situazione altrimenti?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 39,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-041",
+      "text": "Hai sbagliato. Riesci a chiedere scusa?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 42,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-042",
+      "text": "Sei in un gruppo di ragazzi bullizzati. Cosa fai per uscire dalla situazione?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 43,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-047",
+      "text": "Ti è mai capitato di reagire con rabbia e di pentirtene?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 48,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-049",
+      "text": "Qual è la miglior maniera per prendere parola?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 50,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-054",
+      "text": "Cosa serve per prendere parola?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 55,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-080",
+      "text": "Saresti disposto a imparare a cambiare idea?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 81,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-088",
+      "text": "Come potresti trovare equilibrio tra il peso e il giudizio degli altri?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 89,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-091",
+      "text": "Un compagno viene preso in giro, come lo aiuti?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 92,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-092",
+      "text": "Che cosa ti aiuta quando sei triste e in difficoltà?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 93,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-096",
+      "text": "Che cosa fai se vedi un tuo amico a disagio /in difficoltà?",
+      "category": "Strategie",
+      "categoryKey": "strategie",
+      "sourceRow": 97,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    }
+  ],
+  "desideri-comunita": [
+    {
+      "id": "NK-003",
+      "text": "Al parco vedi un senzatetto che ha fame. Cosa fai per aiutarlo?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 4,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-021",
+      "text": "Sei al parco e devi scegliere se far giocare qualcuno. Cosa fai?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 22,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-050",
+      "text": "Quali sono i motivi che ti spingono a prendere parola?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 51,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-078",
+      "text": "come vedi un mondo dove tutti possono prendere parola?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 79,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-079",
+      "text": "Ti piacerebbe che nel mondo ci fossero sempre rispetto e gentilezza?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 80,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-081",
+      "text": "Come sarebbe un mondo dove l’essere umano sa sta insieme?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 82,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-082",
+      "text": "Come vorresti che fosse una realtà nella quale nessuno resta fuori?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 83,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-083",
+      "text": "Secondo l’essere umano sarebbe più evoluto se accogliesse le imperfezioni?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 84,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-084",
+      "text": "Cambierebbero le cose se nella società si accettassero le sfide e le difficoltà con amore?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 85,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-087",
+      "text": "L’essere umano possiede coraggio di essere se stesso in un mondo colmo di fratellanza?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 88,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-093",
+      "text": "Al parco vedi un senzatetto che ha fame, come ti comporti con lui?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 94,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-098",
+      "text": "come ti immagini relazioni con persone che ti accettano per come sei?",
+      "category": "Desideri / Comunità",
+      "categoryKey": "desideri-comunita",
+      "sourceRow": 99,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    }
+  ],
+  "parole-aprono-chiudono": [
+    {
+      "id": "NK-005",
+      "text": "Che cosa provi quando qualcuno ti insulta?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 6,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-007",
+      "text": "Che cosa provi quando qualcuno ti incoraggia?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 8,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-031",
+      "text": "Ti è mai capitato di dire una bugia a fin di bene?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 32,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-039",
+      "text": "Perché è importante dire che qualcosa non ti piace?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 40,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-055",
+      "text": "Quando la parola nutre?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 56,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-056",
+      "text": "Quando la parola ferisce?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 57,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-063",
+      "text": "Ti è mai capitato di avere ragione e dirla male?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 64,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-065",
+      "text": " Si può usare la parola per far sentire male qualcuno?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 66,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-070",
+      "text": "Come posso dire una cosa difficile senza ferire?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 71,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-085",
+      "text": "La verità è importante in un mondo in cui si prende parola per aprire?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 86,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-086",
+      "text": "Quando gli esseri umani conosceranno il vero amore impareranno a chiedere scusa?",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 87,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-097",
+      "text": "Come immagini un gruppo di amici dove ci si dice sempre la verità? Anche se scomoda.",
+      "category": "Parole che aprono / parole che chiudono",
+      "categoryKey": "parole-aprono-chiudono",
+      "sourceRow": 98,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    }
+  ],
+  "potere": [
+    {
+      "id": "NK-004",
+      "text": "Nel gruppo classe c'è un leader negativo. Cosa puoi fare? Come ti comporti?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 5,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-008",
+      "text": "Che cosa provi quando qualcuno ti obbliga a fare qualcosa che non vuoi?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 9,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-009",
+      "text": "Immaginare una situazione di bullismo. Cosa faresti se ti ritrovassi nel gruppo dei bulli?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 10,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-013",
+      "text": "Hai una prof che si comporta ingiustamente con un compagno. Cosa fai?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 14,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-020",
+      "text": "Ti è mai capitato di dare l'esempio?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 21,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-022",
+      "text": "Ti è mai successo di ricevere un obbligo?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 23,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-034",
+      "text": "Sei in chat e qualcuno decide al tuo posto. Cosa fai? Come reagisci?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 35,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-043",
+      "text": "Sei un leader. Cosa fai per migliorare l'armonia in un gruppo?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 44,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-044",
+      "text": "In classe l'insegnante ti sgrida davanti a tutti, e tu non hai capito il motivo. Cosa puoi fare?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 45,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-052",
+      "text": "Cos'è per te il potere che schiaccia?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 53,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-053",
+      "text": "Cos'è per te il potere che apre? ",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 54,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-057",
+      "text": "Che differenza c'è tra l'amore per il potere e il potere dell'amore?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 58,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-058",
+      "text": "Quando una persona usa bene il proprio potere?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 59,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-059",
+      "text": "Cosa rende qualcuno un leader positivo?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 60,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-060",
+      "text": "Quale persona conosci che secondo te è un leader positivo e perché?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 61,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-061",
+      "text": "Che differenza c'è tra guidare e comandare?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 62,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-062",
+      "text": "Si può essere forti senza schiacciare?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 63,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-066",
+      "text": "Cosa fa un bullo quando prende parola?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 67,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-069",
+      "text": "Come capisco se sto comandando anziche guidando?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 70,
+      "sourceColumn": "C",
+      "status": "da migliorare"
+    },
+    {
+      "id": "NK-090",
+      "text": "Come sarebbe una classe in mondo senza re?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 91,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-094",
+      "text": "Nep gruppo in classe c'è un leader negativo cosa puoi fare?Come ti comporti?Cosa dici?",
+      "category": "Piccoli Re / Potere",
+      "categoryKey": "potere",
+      "sourceRow": 95,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    }
+  ],
+  "voce-ascolto": [
+    {
+      "id": "NK-025",
+      "text": "Ti è mai capitato di sentirti ignorato?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 26,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-040",
+      "text": "Stai parlando in un gruppo e nessuno ti ascolta. Cosa fai?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 41,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-045",
+      "text": "Alzare la voce è sempre negativo?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 46,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-046",
+      "text": "In che situazioni alzi la voce?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 47,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-048",
+      "text": "Cosa significa per te prendere parola?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 49,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-064",
+      "text": "Ti è mai capitato di pensare di avere ragione e poi di cambiare idea?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 65,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-067",
+      "text": "Quando una voce può cambiare le cose?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 68,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-071",
+      "text": "Che potere ha il silenzio? ",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 72,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    },
+    {
+      "id": "NK-089",
+      "text": "La sessualità può essere un argomento di libera e frequente conversazione?",
+      "category": "Voce e ascolto",
+      "categoryKey": "voce-ascolto",
+      "sourceRow": 90,
+      "sourceColumn": "B",
+      "status": "definitiva"
+    }
+  ]
+};
+
+</script>
+  <script>
+(() => {
+  "use strict";
+
+  const OPENING_QUESTION = "Come ti chiami e quanti anni hai?";
+  const OPENING_LABEL = "Domanda di presentazione";
+  const CATEGORY_CONFIG = window.NO_KINGS_CATEGORIES || {};
+  const CATEGORY_KEYS = Object.keys(CATEGORY_CONFIG);
+
+  const state = {
+    players: [],
+    currentPlayerIndex: 0,
+    gameType: "questions",
+    drawMode: "manual",
+    openingSeen: [],
+    histories: [],
+    responses: [],
+    currentQuestion: null,
+    turnNumber: 1,
+    ended: false
+  };
+
+  const el = {
+    setupStep: document.querySelector("#setupStep"),
+    namesStep: document.querySelector("#namesStep"),
+    gameStep: document.querySelector("#gameStep"),
+    summaryStep: document.querySelector("#summaryStep"),
+    numPlayers: document.querySelector("#numPlayers"),
+    gameType: document.querySelector("#gameType"),
+    drawMode: document.querySelector("#drawMode"),
+    continueButton: document.querySelector("#continueButton"),
+    backButton: document.querySelector("#backButton"),
+    startButton: document.querySelector("#startButton"),
+    setupError: document.querySelector("#setupError"),
+    namesError: document.querySelector("#namesError"),
+    namesContainer: document.querySelector("#namesContainer"),
+    turnPlayer: document.querySelector("#turnPlayer"),
+    turnCounter: document.querySelector("#turnCounter"),
+    roundLabel: document.querySelector("#roundLabel"),
+    categoryArea: document.querySelector("#categoryArea"),
+    categorySelect: document.querySelector("#categorySelect"),
+    categoryHelp: document.querySelector("#categoryHelp"),
+    questionCard: document.querySelector("#questionCard"),
+    categoryBadge: document.querySelector("#categoryBadge"),
+    questionText: document.querySelector("#questionText"),
+    answerArea: document.querySelector("#answerArea"),
+    answerBox: document.querySelector("#answerBox"),
+    answerError: document.querySelector("#answerError"),
+    mainActionButton: document.querySelector("#mainActionButton"),
+    endGameButton: document.querySelector("#endGameButton"),
+    summaryBox: document.querySelector("#summaryBox"),
+    restartButton: document.querySelector("#restartButton")
+  };
+
+  function categoryLabel(categoryKey) {
+    return CATEGORY_CONFIG[categoryKey]?.label || categoryKey;
+  }
+
+  function populateCategorySelect() {
+    el.categorySelect.innerHTML = "";
+    CATEGORY_KEYS.forEach(categoryKey => {
+      const option = document.createElement("option");
+      option.value = categoryKey;
+      option.textContent = categoryLabel(categoryKey);
+      el.categorySelect.append(option);
+    });
+  }
+
+  function applyQuestionStyle(categoryKey) {
+    el.questionCard.dataset.category = CATEGORY_CONFIG[categoryKey] ? categoryKey : "neutral";
+  }
+
+  function showOnly(section) {
+    [el.setupStep, el.namesStep, el.gameStep, el.summaryStep].forEach(item => {
+      item.classList.toggle("hidden", item !== section);
+    });
+  }
+
+  function validPlayerCount() {
+    const count = Number.parseInt(el.numPlayers.value, 10);
+    return Number.isInteger(count) && count >= 2 && count <= 15 ? count : null;
+  }
+
+  function buildNameFields(count) {
+    el.namesContainer.innerHTML = "";
+    for (let index = 0; index < count; index += 1) {
+      const wrapper = document.createElement("div");
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+
+      label.htmlFor = `player-${index}`;
+      label.textContent = `Giocatore ${index + 1}`;
+      input.id = `player-${index}`;
+      input.type = "text";
+      input.maxLength = 40;
+      input.placeholder = `Nome del giocatore ${index + 1}`;
+      input.autocomplete = "off";
+
+      wrapper.append(label, input);
+      el.namesContainer.append(wrapper);
+    }
+  }
+
+  function goToNames() {
+    const count = validPlayerCount();
+    if (!count) {
+      el.setupError.textContent = "Scegli un numero di giocatori compreso tra 2 e 15.";
+      return;
+    }
+
+    el.setupError.textContent = "";
+    buildNameFields(count);
+    showOnly(el.namesStep);
+    el.namesContainer.querySelector("input")?.focus();
+  }
+
+  function readPlayers() {
+    return [...el.namesContainer.querySelectorAll("input")].map((input, index) => {
+      const value = input.value.trim();
+      return value || `Giocatore ${index + 1}`;
+    });
+  }
+
+  function databaseIsReady() {
+    return CATEGORY_KEYS.length === 6 && CATEGORY_KEYS.every(key => Array.isArray(window.QUESTION_DATABASE?.[key]));
+  }
+
+  function startGame() {
+    if (!databaseIsReady()) {
+      el.namesError.textContent = "Il database locale delle domande non è disponibile o non è completo.";
+      return;
+    }
+
+    state.players = readPlayers();
+
+    if (state.players.length < 2 || state.players.length > 15) {
+      el.namesError.textContent = "Servono da due a quindici giocatori.";
+      return;
+    }
+
+    state.currentPlayerIndex = 0;
+    state.gameType = el.gameType.value;
+    state.drawMode = el.drawMode.value;
+    state.openingSeen = state.players.map(() => false);
+    state.histories = state.players.map(() => new Set());
+    state.responses = [];
+    state.currentQuestion = null;
+    state.turnNumber = 1;
+    state.ended = false;
+
+    el.namesError.textContent = "";
+    el.answerArea.classList.toggle("hidden", state.gameType !== "answers");
+    el.endGameButton.classList.toggle("hidden", state.gameType !== "answers");
+    el.categoryArea.classList.toggle("hidden", state.drawMode !== "manual");
+    showOnly(el.gameStep);
+    prepareTurn();
+  }
+
+  function allOpeningQuestionsCompleted() {
+    return state.openingSeen.every(Boolean);
+  }
+
+  function prepareTurn() {
+    const player = state.players[state.currentPlayerIndex];
+    el.turnPlayer.textContent = `Tocca a ${player}`;
+    el.turnCounter.textContent = `Turno ${state.turnNumber}`;
+    el.answerBox.value = "";
+    el.answerError.textContent = "";
+    state.currentQuestion = null;
+
+    if (!state.openingSeen[state.currentPlayerIndex]) {
+      state.openingSeen[state.currentPlayerIndex] = true;
+      state.currentQuestion = {
+        id: `PRESENTAZIONE-${state.currentPlayerIndex + 1}`,
+        text: OPENING_QUESTION,
+        category: OPENING_LABEL,
+        categoryKey: "presentazione",
+        sourceRow: null,
+        sourceColumn: null,
+        status: "presentazione",
+        opening: true
+      };
+      showCurrentQuestion();
+      el.roundLabel.textContent = "Giro di presentazione";
+      el.categorySelect.disabled = true;
+      el.categoryHelp.textContent = "Nel primo giro la domanda è uguale per tutti.";
+      setAdvanceButton();
+      return;
+    }
+
+    el.roundLabel.textContent = "Domanda dal mazzo";
+    el.categorySelect.disabled = false;
+    el.categoryHelp.textContent = "";
+
+    if (state.drawMode === "random") {
+      drawRandomQuestion();
+      setAdvanceButton();
+    } else {
+      applyQuestionStyle(null);
+      el.categoryBadge.textContent = "Scegli una categoria";
+      el.questionText.textContent = "Quando sei pronto, pesca una domanda.";
+      el.mainActionButton.textContent = "Pesca una domanda";
+    }
+  }
+
+  function availableQuestionsFor(playerIndex, category = null) {
+    const history = state.histories[playerIndex];
+    const categories = category ? [category] : CATEGORY_KEYS;
+    const available = [];
+
+    categories.forEach(categoryKey => {
+      const questions = window.QUESTION_DATABASE[categoryKey] || [];
+      questions.forEach(question => {
+        if (!history.has(question.text)) {
+          available.push({ ...question, opening: false });
+        }
+      });
+    });
+
+    return available;
+  }
+
+  function chooseRandom(items) {
+    return items[Math.floor(Math.random() * items.length)];
+  }
+
+  function drawRandomQuestion() {
+    const available = availableQuestionsFor(state.currentPlayerIndex);
+    if (available.length === 0) {
+      showDeckEmpty();
+      return false;
+    }
+
+    state.currentQuestion = chooseRandom(available);
+    state.histories[state.currentPlayerIndex].add(state.currentQuestion.text);
+    showCurrentQuestion();
+    return true;
+  }
+
+  function drawManualQuestion() {
+    const category = el.categorySelect.value;
+    const available = availableQuestionsFor(state.currentPlayerIndex, category);
+
+    if (available.length === 0) {
+      applyQuestionStyle(category);
+      el.categoryBadge.textContent = categoryLabel(category);
+      el.questionText.textContent = "Questo giocatore ha già ricevuto tutte le domande di questa categoria. Scegline un’altra.";
+      return false;
+    }
+
+    state.currentQuestion = chooseRandom(available);
+    state.histories[state.currentPlayerIndex].add(state.currentQuestion.text);
+    showCurrentQuestion();
+    setAdvanceButton();
+    return true;
+  }
+
+  function showDeckEmpty() {
+    state.currentQuestion = null;
+    applyQuestionStyle(null);
+    el.categoryBadge.textContent = "Mazzo completato";
+    el.questionText.textContent = "Questo giocatore ha già ricevuto tutte le domande disponibili.";
+    el.mainActionButton.textContent = "Passa al prossimo giocatore";
+  }
+
+  function showCurrentQuestion() {
+    const categoryKey = state.currentQuestion.opening ? null : state.currentQuestion.categoryKey;
+    const label = state.currentQuestion.opening
+      ? OPENING_LABEL
+      : categoryLabel(categoryKey);
+
+    applyQuestionStyle(categoryKey);
+    el.categoryBadge.textContent = label;
+    el.questionText.textContent = state.currentQuestion.text;
+  }
+
+  function setAdvanceButton() {
+    el.mainActionButton.textContent = state.gameType === "answers"
+      ? "Salva la risposta e passa il turno"
+      : "Passa al prossimo giocatore";
+  }
+
+  function saveCurrentResponse(requireAnswer) {
+    if (state.gameType !== "answers" || !state.currentQuestion) {
+      return true;
+    }
+
+    const answer = el.answerBox.value.trim();
+    if (!answer && requireAnswer) {
+      el.answerError.textContent = "Scrivi una risposta prima di passare il turno.";
+      el.answerBox.focus();
+      return false;
+    }
+
+    if (answer) {
+      state.responses.push({
+        player: state.players[state.currentPlayerIndex],
+        category: state.currentQuestion.opening
+          ? OPENING_LABEL
+          : categoryLabel(state.currentQuestion.categoryKey),
+        categoryKey: state.currentQuestion.opening ? "presentazione" : state.currentQuestion.categoryKey,
+        question: state.currentQuestion.text,
+        answer
+      });
+    }
+
+    return true;
+  }
+
+  function advanceTurn() {
+    if (!saveCurrentResponse(true)) {
+      return;
+    }
+
+    state.currentPlayerIndex = (state.currentPlayerIndex + 1) % state.players.length;
+    state.turnNumber += 1;
+    prepareTurn();
+  }
+
+  function handleMainAction() {
+    if (state.ended) return;
+
+    if (!state.currentQuestion && state.drawMode === "manual" && allOpeningQuestionsCompleted()) {
+      drawManualQuestion();
+      return;
+    }
+
+    if (!state.currentQuestion) {
+      advanceTurn();
+      return;
+    }
+
+    advanceTurn();
+  }
+
+  function formatTextExport() {
+    const now = new Date();
+    const lines = [
+      "NO KINGS — PROTOTIPO · ALICUBI",
+      `Data: ${now.toLocaleString("it-IT")}`,
+      `Giocatori: ${state.players.join(", ")}`,
+      "",
+      "RISPOSTE",
+      "=========",
+      ""
+    ];
+
+    state.responses.forEach((entry, index) => {
+      lines.push(
+        `${index + 1}. ${entry.player}`,
+        `Categoria: ${entry.category}`,
+        `Domanda: ${entry.question}`,
+        `Risposta: ${entry.answer}`,
+        ""
+      );
+    });
+
+    return lines.join("\n");
+  }
+
+  function downloadResponses() {
+    const blob = new Blob(["\uFEFF" + formatTextExport()], {
+      type: "text/plain;charset=utf-8"
+    });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    const date = new Date().toISOString().slice(0, 10);
+
+    anchor.href = url;
+    anchor.download = `no_kings_risposte_${date}.txt`;
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  function buildSummary() {
+    el.summaryBox.innerHTML = "";
+
+    if (state.responses.length === 0) {
+      el.summaryBox.textContent = "Non sono state registrate risposte.";
+      return;
+    }
+
+    state.responses.forEach(entry => {
+      const card = document.createElement("article");
+      card.className = "summary-entry";
+      card.dataset.category = CATEGORY_CONFIG[entry.categoryKey] ? entry.categoryKey : "neutral";
+
+      const title = document.createElement("h3");
+      title.textContent = entry.player;
+
+      const meta = document.createElement("p");
+      meta.innerHTML = `<strong>${escapeHtml(entry.category)}</strong> · ${escapeHtml(entry.question)}`;
+
+      const answer = document.createElement("p");
+      answer.textContent = entry.answer;
+
+      card.append(title, meta, answer);
+      el.summaryBox.append(card);
+    });
+  }
+
+  function escapeHtml(value) {
+    return value
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function endGame() {
+    if (state.ended) return;
+
+    saveCurrentResponse(false);
+    state.ended = true;
+    downloadResponses();
+    buildSummary();
+    showOnly(el.summaryStep);
+  }
+
+  function restart() {
+    window.location.reload();
+  }
+
+  populateCategorySelect();
+  el.continueButton.addEventListener("click", goToNames);
+  el.backButton.addEventListener("click", () => showOnly(el.setupStep));
+  el.startButton.addEventListener("click", startGame);
+  el.mainActionButton.addEventListener("click", handleMainAction);
+  el.endGameButton.addEventListener("click", endGame);
+  el.restartButton.addEventListener("click", restart);
+})();
+
+</script>
+</body>
+</html>

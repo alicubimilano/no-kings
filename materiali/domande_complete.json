@@ -1,0 +1,958 @@
+{
+  "title": "NO KINGS — Prototipo",
+  "source": {
+    "fileTitle": "Domande Prototipo 01 - CAMPUS FUTURE CREATORS 2026",
+    "sheet": "01_Domande",
+    "columns": {
+      "B": "Versione definitiva",
+      "C": "Versione da migliorare",
+      "D": "Categoria provvisoria"
+    }
+  },
+  "categories": {
+    "fatiche": {
+      "label": "Fatiche",
+      "sourceLabel": "Fatiche",
+      "guideline": "FATICA"
+    },
+    "strategie": {
+      "label": "Strategie",
+      "sourceLabel": "Strategie",
+      "guideline": "STRATEGIA"
+    },
+    "desideri-comunita": {
+      "label": "Desideri / Comunità",
+      "sourceLabel": "Desideri / Comunità",
+      "guideline": "DESIDERIO / COMUNITÀ"
+    },
+    "parole-aprono-chiudono": {
+      "label": "Parole che aprono / parole che chiudono",
+      "sourceLabel": "Parole che aprono / parole che chiudono",
+      "guideline": "PAROLA CHE APRE/CHIUDE"
+    },
+    "potere": {
+      "label": "Piccoli Re / Potere",
+      "sourceLabel": "Piccoli Re / Potere",
+      "guideline": "POTERE"
+    },
+    "voce-ascolto": {
+      "label": "Voce e ascolto",
+      "sourceLabel": "Voce e ascolto",
+      "guideline": "VOCE E ASCOLTO"
+    }
+  },
+  "questions": {
+    "fatiche": [
+      {
+        "id": "NK-011",
+        "text": "Cosa provi quando ti senti giudicato?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 12,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-018",
+        "text": "Ti è mai successo di tacere per non sembrare maleducato?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 19,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-024",
+        "text": "Quando fai fatica a prendere parola?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 25,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-032",
+        "text": "Ti è mai capitato di fare una cosa solo perché la faceva il gruppo?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 33,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-033",
+        "text": "Quando hai parlato di un argomento scomodo ai tuoi?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 34,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-035",
+        "text": "Quando ti è successo di dover chiedere scusa a qualcuno ma di non riuscirci?  ",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 36,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-051",
+        "text": "Quali sono i motivi che ti bloccano nel prendere parola?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 52,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-068",
+        "text": "Perché a volte non diciamo quello che pensiamo?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 69,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-072",
+        "text": "Durante un gioco tutti parlano insieme e nessuno ti lascia finire una frase. Che cosa fai?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 73,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-073",
+        "text": "Un amico racconta un tuo segreto senza chiederti il permesso. Che cosa fai?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 74,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-074",
+        "text": "Un amico insiste perché tu faccia una cosa che non ti convince. Che cosa dici?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 75,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-075",
+        "text": "Durante un lavoro di gruppo una tua idea viene ignorata. Che cosa fai?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 76,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-076",
+        "text": "Hai cambiato idea su una cosa importante, ma temi che gli altri ti giudichino. Che cosa fai?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 77,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-077",
+        "text": "Devi scusarti, ma non sai come. Che cosa fai?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 78,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-095",
+        "text": "Che cosa provi quando qualcuno ti insulta ?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 96,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-099",
+        "text": "fai fatica a cambiare idea?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 100,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-100",
+        "text": "cosa non ti permette di cambiare idea?",
+        "category": "Fatiche",
+        "categoryKey": "fatiche",
+        "sourceRow": 101,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      }
+    ],
+    "strategie": [
+      {
+        "id": "NK-001",
+        "text": "Un compagno viene preso in giro. Come lo aiuti?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 2,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-002",
+        "text": "Che cosa ti aiuta quando sei triste o in difficoltà?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 3,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-006",
+        "text": "Che cosa fai quando vedi un tuo amico a disagio o in difficolta?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 7,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-010",
+        "text": "Ti è mai capitato di aiutare un amico a sbloccarsi su una fatica?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 11,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-012",
+        "text": "Chi o cosa ti aiuta quando provi imbarazzo?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 13,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-014",
+        "text": "Quando davanti hai una sfida come la affronti?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 15,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-015",
+        "text": "Cosa fai per farti rispettare?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 16,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-016",
+        "text": "Come ti sfoghi quando sei arrabbiato?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 17,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-017",
+        "text": "Immagina di essere al parco con degli amici che prendono in giro qualcuno. Cosa fai e perche?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 18,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-019",
+        "text": "Sei in classe ed un tuo compagno inizia a piangere. Cosa fai?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 20,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-023",
+        "text": "Ti scrive un numero sconosciuto su WhatsApp. Sei spaventato. Come reagisci?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 24,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-026",
+        "text": "Ti ritrovi la chat di classe piena di sticker inutili. Cosa fai?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 27,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-027",
+        "text": "Cosa faresti se vedessi un amico preso in giro davanti ai tuoi occhi? (e a tutti?)",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 28,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-028",
+        "text": "Due tuoi amici hanno litigato e non si parlano più. cosa fai?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 29,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-029",
+        "text": "Che superpotere vorresti avere nel caso ti sentissi umiliato?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 30,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-030",
+        "text": "Cosa fai se qualcuno ti offende in una chat di gruppo?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 31,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-036",
+        "text": "Quando sei con amici ti viene uno scatto di rabbia. Cosa fai?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 37,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-037",
+        "text": "Ti è mai capitato di dover gestire una situazione complicata?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 38,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-038",
+        "text": "Hai sbagliato e ti senti in colpa. come risolvi la situazione altrimenti?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 39,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-041",
+        "text": "Hai sbagliato. Riesci a chiedere scusa?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 42,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-042",
+        "text": "Sei in un gruppo di ragazzi bullizzati. Cosa fai per uscire dalla situazione?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 43,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-047",
+        "text": "Ti è mai capitato di reagire con rabbia e di pentirtene?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 48,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-049",
+        "text": "Qual è la miglior maniera per prendere parola?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 50,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-054",
+        "text": "Cosa serve per prendere parola?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 55,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-080",
+        "text": "Saresti disposto a imparare a cambiare idea?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 81,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-088",
+        "text": "Come potresti trovare equilibrio tra il peso e il giudizio degli altri?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 89,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-091",
+        "text": "Un compagno viene preso in giro, come lo aiuti?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 92,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-092",
+        "text": "Che cosa ti aiuta quando sei triste e in difficoltà?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 93,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-096",
+        "text": "Che cosa fai se vedi un tuo amico a disagio /in difficoltà?",
+        "category": "Strategie",
+        "categoryKey": "strategie",
+        "sourceRow": 97,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      }
+    ],
+    "desideri-comunita": [
+      {
+        "id": "NK-003",
+        "text": "Al parco vedi un senzatetto che ha fame. Cosa fai per aiutarlo?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 4,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-021",
+        "text": "Sei al parco e devi scegliere se far giocare qualcuno. Cosa fai?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 22,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-050",
+        "text": "Quali sono i motivi che ti spingono a prendere parola?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 51,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-078",
+        "text": "come vedi un mondo dove tutti possono prendere parola?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 79,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-079",
+        "text": "Ti piacerebbe che nel mondo ci fossero sempre rispetto e gentilezza?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 80,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-081",
+        "text": "Come sarebbe un mondo dove l’essere umano sa sta insieme?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 82,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-082",
+        "text": "Come vorresti che fosse una realtà nella quale nessuno resta fuori?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 83,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-083",
+        "text": "Secondo l’essere umano sarebbe più evoluto se accogliesse le imperfezioni?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 84,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-084",
+        "text": "Cambierebbero le cose se nella società si accettassero le sfide e le difficoltà con amore?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 85,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-087",
+        "text": "L’essere umano possiede coraggio di essere se stesso in un mondo colmo di fratellanza?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 88,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-093",
+        "text": "Al parco vedi un senzatetto che ha fame, come ti comporti con lui?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 94,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-098",
+        "text": "come ti immagini relazioni con persone che ti accettano per come sei?",
+        "category": "Desideri / Comunità",
+        "categoryKey": "desideri-comunita",
+        "sourceRow": 99,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      }
+    ],
+    "parole-aprono-chiudono": [
+      {
+        "id": "NK-005",
+        "text": "Che cosa provi quando qualcuno ti insulta?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 6,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-007",
+        "text": "Che cosa provi quando qualcuno ti incoraggia?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 8,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-031",
+        "text": "Ti è mai capitato di dire una bugia a fin di bene?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 32,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-039",
+        "text": "Perché è importante dire che qualcosa non ti piace?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 40,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-055",
+        "text": "Quando la parola nutre?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 56,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-056",
+        "text": "Quando la parola ferisce?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 57,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-063",
+        "text": "Ti è mai capitato di avere ragione e dirla male?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 64,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-065",
+        "text": " Si può usare la parola per far sentire male qualcuno?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 66,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-070",
+        "text": "Come posso dire una cosa difficile senza ferire?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 71,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-085",
+        "text": "La verità è importante in un mondo in cui si prende parola per aprire?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 86,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-086",
+        "text": "Quando gli esseri umani conosceranno il vero amore impareranno a chiedere scusa?",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 87,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-097",
+        "text": "Come immagini un gruppo di amici dove ci si dice sempre la verità? Anche se scomoda.",
+        "category": "Parole che aprono / parole che chiudono",
+        "categoryKey": "parole-aprono-chiudono",
+        "sourceRow": 98,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      }
+    ],
+    "potere": [
+      {
+        "id": "NK-004",
+        "text": "Nel gruppo classe c'è un leader negativo. Cosa puoi fare? Come ti comporti?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 5,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-008",
+        "text": "Che cosa provi quando qualcuno ti obbliga a fare qualcosa che non vuoi?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 9,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-009",
+        "text": "Immaginare una situazione di bullismo. Cosa faresti se ti ritrovassi nel gruppo dei bulli?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 10,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-013",
+        "text": "Hai una prof che si comporta ingiustamente con un compagno. Cosa fai?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 14,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-020",
+        "text": "Ti è mai capitato di dare l'esempio?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 21,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-022",
+        "text": "Ti è mai successo di ricevere un obbligo?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 23,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-034",
+        "text": "Sei in chat e qualcuno decide al tuo posto. Cosa fai? Come reagisci?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 35,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-043",
+        "text": "Sei un leader. Cosa fai per migliorare l'armonia in un gruppo?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 44,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-044",
+        "text": "In classe l'insegnante ti sgrida davanti a tutti, e tu non hai capito il motivo. Cosa puoi fare?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 45,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-052",
+        "text": "Cos'è per te il potere che schiaccia?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 53,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-053",
+        "text": "Cos'è per te il potere che apre? ",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 54,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-057",
+        "text": "Che differenza c'è tra l'amore per il potere e il potere dell'amore?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 58,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-058",
+        "text": "Quando una persona usa bene il proprio potere?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 59,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-059",
+        "text": "Cosa rende qualcuno un leader positivo?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 60,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-060",
+        "text": "Quale persona conosci che secondo te è un leader positivo e perché?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 61,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-061",
+        "text": "Che differenza c'è tra guidare e comandare?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 62,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-062",
+        "text": "Si può essere forti senza schiacciare?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 63,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-066",
+        "text": "Cosa fa un bullo quando prende parola?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 67,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-069",
+        "text": "Come capisco se sto comandando anziche guidando?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 70,
+        "sourceColumn": "C",
+        "status": "da migliorare"
+      },
+      {
+        "id": "NK-090",
+        "text": "Come sarebbe una classe in mondo senza re?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 91,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-094",
+        "text": "Nep gruppo in classe c'è un leader negativo cosa puoi fare?Come ti comporti?Cosa dici?",
+        "category": "Piccoli Re / Potere",
+        "categoryKey": "potere",
+        "sourceRow": 95,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      }
+    ],
+    "voce-ascolto": [
+      {
+        "id": "NK-025",
+        "text": "Ti è mai capitato di sentirti ignorato?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 26,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-040",
+        "text": "Stai parlando in un gruppo e nessuno ti ascolta. Cosa fai?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 41,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-045",
+        "text": "Alzare la voce è sempre negativo?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 46,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-046",
+        "text": "In che situazioni alzi la voce?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 47,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-048",
+        "text": "Cosa significa per te prendere parola?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 49,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-064",
+        "text": "Ti è mai capitato di pensare di avere ragione e poi di cambiare idea?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 65,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-067",
+        "text": "Quando una voce può cambiare le cose?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 68,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-071",
+        "text": "Che potere ha il silenzio? ",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 72,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      },
+      {
+        "id": "NK-089",
+        "text": "La sessualità può essere un argomento di libera e frequente conversazione?",
+        "category": "Voce e ascolto",
+        "categoryKey": "voce-ascolto",
+        "sourceRow": 90,
+        "sourceColumn": "B",
+        "status": "definitiva"
+      }
+    ]
+  }
+}

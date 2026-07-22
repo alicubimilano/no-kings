@@ -1,0 +1,11 @@
+{
+  "css_embedded_exact": true,
+  "questions_embedded_exact": true,
+  "app_embedded_exact": true,
+  "no_external_stylesheet": true,
+  "no_external_script_src": true,
+  "logo_embedded_data_uri": true,
+  "no_old_title": true,
+  "new_player_limit": true,
+  "question_count_100": true
+}
