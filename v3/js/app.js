@@ -43,7 +43,8 @@
     lastEndTrigger: null,
     lastMakingTrigger: null,
     lastLightboxTrigger: null,
-    restoring: false
+    restoring: false,
+    resumeScreenAfterIntro: null
   };
 
   const screens = ["introScreen", "openingScreen", "setupScreen", "namesScreen", "readyScreen", "gameScreen", "finalScreen", "makingScreen"];
@@ -682,7 +683,23 @@
   renderGalleryThumbs();
   updateModeCards();
 
-  $("#enterGame").addEventListener("click", () => showScreen("openingScreen"));
+  function enterFromIntro() {
+    const target = state.resumeScreenAfterIntro;
+    state.resumeScreenAfterIntro = null;
+
+    if (target && screens.includes(target) && target !== "introScreen") {
+      showScreen(target);
+      if (target === "gameScreen") {
+        if (state.pendingManualSelection) openCategoryDialog();
+        else if (state.endDialogOpen) openEndConfirm($("#endGame"));
+      }
+      return;
+    }
+
+    showScreen("openingScreen");
+  }
+
+  $("#enterGame").addEventListener("click", enterFromIntro);
   $("#prepareGame").addEventListener("click", () => showScreen("setupScreen"));
   $("#backToOpening").addEventListener("click", () => showScreen("openingScreen"));
   $("#decreasePlayers").addEventListener("click", () => changePlayerCount(-1));
@@ -791,7 +808,22 @@
     }
   });
 
-  if (!restoreSession()) {
+  const restored = restoreSession();
+  if (restored) {
+    const restoredScreen = state.currentScreen;
+    state.resumeScreenAfterIntro = state.gameStarted
+      ? (restoredScreen === "makingScreen" ? "makingScreen" : "gameScreen")
+      : state.gameFinished
+        ? (restoredScreen === "makingScreen" ? "makingScreen" : "finalScreen")
+        : "openingScreen";
+
+    // La copertina deve comparire a ogni caricamento, ma lo stato della partita
+    // resta in memoria e viene ripristinato quando si entra nel gioco.
+    closeModalNode($("#categoryDialog"));
+    closeModalNode($("#endConfirmDialog"));
+    closeModalNode($("#galleryLightbox"));
+    showScreen("introScreen", { persist: false });
+  } else {
     syncSetupControls();
     showScreen("introScreen", { persist: false });
   }
