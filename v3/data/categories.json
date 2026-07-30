@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "categories": [
+    {
+      "key": "fatica",
+      "label": "Fatica",
+      "primarySymbol": "fist",
+      "symbolVariants": [
+        "arm",
+        "fist",
+        "lightning"
+      ],
+      "symbolBase": "assets/symbols/fatica",
+      "primarySymbolPath": "assets/symbols/fatica/fist/symbol.webp",
+      "primaryMaskPath": "assets/symbols/fatica/fist/mask.png"
+    },
+    {
+      "key": "strategia",
+      "label": "Strategia",
+      "primarySymbol": "lightbulb",
+      "symbolVariants": [
+        "transformation",
+        "lightbulb",
+        "wand"
+      ],
+      "symbolBase": "assets/symbols/strategia",
+      "primarySymbolPath": "assets/symbols/strategia/lightbulb/symbol.webp",
+      "primaryMaskPath": "assets/symbols/strategia/lightbulb/mask.png"
+    },
+    {
+      "key": "desiderio-comunita",
+      "label": "Desiderio / Comunità",
+      "primarySymbol": "constellation",
+      "symbolVariants": [
+        "constellation",
+        "community",
+        "interlocking-hearts"
+      ],
+      "symbolBase": "assets/symbols/desiderio-comunita",
+      "primarySymbolPath": "assets/symbols/desiderio-comunita/constellation/symbol.webp",
+      "primaryMaskPath": "assets/symbols/desiderio-comunita/constellation/mask.png"
+    },
+    {
+      "key": "parola-apre-chiude",
+      "label": "Parola che apre/chiude",
+      "primarySymbol": "key",
+      "symbolVariants": [
+        "key",
+        "speech-bubbles",
+        "fork-arrows"
+      ],
+      "symbolBase": "assets/symbols/parola-apre-chiude",
+      "primarySymbolPath": "assets/symbols/parola-apre-chiude/key/symbol.webp",
+      "primaryMaskPath": "assets/symbols/parola-apre-chiude/key/mask.png"
+    },
+    {
+      "key": "potere",
+      "label": "Potere",
+      "primarySymbol": "crown",
+      "symbolVariants": [
+        "crown",
+        "handshake",
+        "winged-heart"
+      ],
+      "symbolBase": "assets/symbols/potere",
+      "primarySymbolPath": "assets/symbols/potere/crown/symbol.webp",
+      "primaryMaskPath": "assets/symbols/potere/crown/mask.png"
+    },
+    {
+      "key": "voce-ascolto",
+      "label": "Voce e ascolto",
+      "primarySymbol": "megaphone",
+      "symbolVariants": [
+        "megaphone",
+        "ear",
+        "speaking-profile"
+      ],
+      "symbolBase": "assets/symbols/voce-ascolto",
+      "primarySymbolPath": "assets/symbols/voce-ascolto/megaphone/symbol.webp",
+      "primaryMaskPath": "assets/symbols/voce-ascolto/megaphone/mask.png"
+    }
+  ]
+}

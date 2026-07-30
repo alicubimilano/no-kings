@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "appTitle": "GIÙ DAL TRONO — test gioco V.03",
+  "opening": {
+    "why": "GIÙ DAL TRONO è un gioco di domande per allenarsi a prendere parola, conoscersi, confrontarsi e riflettere sul POTERE.",
+    "custodian": "Il o la CUSTODE DELLA PAROLA è adulto, modera, accompagna il gioco, distribuisce la parola, aiuta ad approfondire e protegge uno spazio di ascolto e rispetto.",
+    "participation": "Ad ogni GIOCATORE viene assegnata una domanda, a turno, a cui si può rispondere liberamente: non ci sono risposte giuste o sbagliate. Si può raccontare un’esperienza, fare un esempio, cambiare idea oppure passare.\n\nSi gioca senza interrompere, senza giudicare e lasciando posto a tutte le voci dagli 8 ai 99 anni.",
+    "success": "Non c’è un vincitore. La partita riesce quando ogni voce trova il suo spazio."
+  },
+  "ready": "Tutto pronto.\n\nIl Custode della Parola può dare inizio al gioco, leggere le domande e accompagnare ogni voce.",
+  "finalTitle": "GRAZIE",
+  "finalText": "Grazie per aver dato spazio alle parole, all’ascolto e alle idee degli altri. Speriamo che questo gioco vi abbia aiutato a conoscervi e a guardare il potere da nuovi punti di vista.",
+  "makingOf": "GIÙ DAL TRONO è nato durante Future Creators 2026, il campus di Alicubi. Le domande, i disegni, i simboli e le regole sono stati costruiti attraverso conversazioni, prove, errori e decisioni collettive.\n\nIl gioco attraversa fatica, strategie, desideri, comunità, parole, potere, voce e ascolto. Non è stato inventato per dare risposte giuste, ma per aiutare ragazze, ragazzi e adulti a prendere parola, ascoltarsi e conoscersi.",
+  "alicubiUrl": "https://alicubi-milano.it"
+}

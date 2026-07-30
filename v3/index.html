@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111111">
+  <title>GIÙ DAL TRONO — test gioco V.03</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#app">Vai al contenuto principale</a>
+  <noscript><div class="noscript">Per utilizzare il gioco è necessario attivare JavaScript.</div></noscript>
+
+  <main id="app" class="app-shell" tabindex="-1">
+    <section id="introScreen" class="screen intro-screen is-active" aria-labelledby="introTitle" aria-hidden="false">
+      <button id="enterGame" class="intro-entry" type="button" aria-label="Entra nel gioco Giù dal trono">
+        <img class="intro-logo" src="assets/logos/logo-giu-dal-trono.png" alt="Giù dal trono">
+        <span id="introTitle" class="intro-subtitle">Un gioco di domande per riflettere sul potere</span>
+      </button>
+    </section>
+
+    <section id="openingScreen" class="screen opening-screen" aria-labelledby="openingTitle" aria-hidden="true" inert>
+      <article class="opening-shell opening-b-approved">
+        <img class="opening-logo" src="assets/logos/logo-giu-dal-trono.png" alt="Giù dal trono">
+        <h1 id="openingTitle" class="opening-title">GIÙ DAL TRONO — test gioco V.03</h1>
+
+        <div class="approved-four-columns" aria-label="Come si gioca">
+          <section class="rule-step">
+            <div class="rule-num">01</div>
+            <h2>Perché si gioca</h2>
+            <p id="openingWhy"></p>
+          </section>
+          <section class="rule-step">
+            <div class="rule-num">02</div>
+            <h2>Chi custodisce il gioco</h2>
+            <p id="openingCustodian"></p>
+          </section>
+          <section class="rule-step">
+            <div class="rule-num">03</div>
+            <h2>Come si partecipa</h2>
+            <div id="openingParticipation"></div>
+          </section>
+          <section class="rule-step rule-step-purpose">
+            <div class="rule-num">04</div>
+            <h2>Quando il gioco riesce</h2>
+            <p><strong id="openingSuccess"></strong></p>
+          </section>
+        </div>
+
+        <footer class="approved-opening-actions">
+          <div class="approved-action-left">
+            <button id="prepareGame" class="primary large" type="button">Prepara la partita</button>
+          </div>
+          <div class="approved-action-center">
+            <button id="openMaking" class="text-button process-link" type="button">Scopri come abbiamo lavorato</button>
+          </div>
+          <div class="approved-action-right">
+            <a id="alicubiOpeningLink" href="https://alicubi-milano.it" target="_blank" rel="noopener noreferrer" aria-label="Visita il sito di Alicubi">
+              <img class="alicubi-mini" src="assets/logos/logo-alicubi.png" alt="Alicubi">
+            </a>
+          </div>
+        </footer>
+      </article>
+    </section>
+
+    <section id="setupScreen" aria-hidden="true" class="screen form-screen" aria-labelledby="setupTitle">
+      <header class="compact-brand">
+        <img src="assets/logos/logo-giu-dal-trono.png" alt="Giù dal trono">
+        <span>test gioco V.03</span>
+      </header>
+
+      <div class="form-card">
+        <span class="step-label">1 · PREPARA LA PARTITA</span>
+        <h1 id="setupTitle">Quanti siete e come volete pescare?</h1>
+
+        <div class="field-block">
+          <label for="numPlayers">Numero di giocatori</label>
+          <div class="number-control">
+            <button id="decreasePlayers" type="button" aria-label="Riduci il numero dei giocatori">−</button>
+            <input id="numPlayers" type="number" min="2" max="30" value="4" inputmode="numeric" aria-describedby="playersHelp">
+            <button id="increasePlayers" type="button" aria-label="Aumenta il numero dei giocatori">+</button>
+          </div>
+          <p id="playersHelp" class="field-help">Da 2 a 30 persone. Il Custode della Parola conduce dal proprio schermo.</p>
+        </div>
+
+        <fieldset class="field-block">
+          <legend>Scelta della categoria</legend>
+          <label class="mode-card selected">
+            <input type="radio" name="drawMode" value="random" checked>
+            <span class="mode-copy">
+              <strong>La sceglie il gioco</strong>
+              <small>Ogni domanda viene pescata da tutte le categorie disponibili.</small>
+            </span>
+            <span class="default-tag">PREDEFINITA</span>
+          </label>
+          <label class="mode-card">
+            <input type="radio" name="drawMode" value="manual">
+            <span class="mode-copy">
+              <strong>La scegli tu ogni volta</strong>
+              <small>Prima di ogni domanda il Custode sceglie una categoria, oppure lascia scegliere il gioco per quel turno.</small>
+            </span>
+          </label>
+        </fieldset>
+
+        <p id="setupError" class="error" aria-live="polite"></p>
+        <div class="form-actions">
+          <button id="backToOpening" class="secondary" type="button">Indietro</button>
+          <button id="goToNames" class="primary" type="button">Inserisci i nomi</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="namesScreen" aria-hidden="true" class="screen form-screen" aria-labelledby="namesTitle">
+      <header class="compact-brand">
+        <img src="assets/logos/logo-giu-dal-trono.png" alt="Giù dal trono">
+        <span>test gioco V.03</span>
+      </header>
+
+      <div class="form-card wide">
+        <span class="step-label">2 · GIOCATORI</span>
+        <h1 id="namesTitle">Come vi chiamate?</h1>
+        <p class="lead">Il nome sarà molto evidente quando arriverà il momento di prendere parola.</p>
+        <div id="namesGrid" class="names-grid"></div>
+        <p id="namesError" class="error" aria-live="polite"></p>
+        <div class="form-actions">
+          <button id="backToSetup" class="secondary" type="button">Indietro</button>
+          <button id="goToReady" class="primary" type="button">Continua</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="readyScreen" aria-hidden="true" class="screen ready-screen" aria-labelledby="readyTitle">
+      <div class="ready-card">
+        <img class="ready-logo" src="assets/logos/logo-giu-dal-trono.png" alt="Giù dal trono">
+        <h1 id="readyTitle">Tutto pronto.</h1>
+        <p id="readyCopy">Il Custode della Parola può dare inizio al gioco, leggere le domande e accompagnare ogni voce.</p>
+
+        <div class="ready-summary">
+          <div><span>Partecipanti</span><strong id="readyPlayers">4</strong></div>
+          <div><span>Modalità</span><strong id="readyMode">La sceglie il gioco</strong></div>
+        </div>
+
+        <div class="form-actions center ready-action-only">
+          <button id="startGame" class="primary large" type="button">Inizia con la prima domanda</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="gameScreen" aria-hidden="true" class="screen game-screen" aria-labelledby="playerName" data-category="neutral">
+      <header class="game-header">
+        <img src="assets/logos/logo-giu-dal-trono.png" alt="Giù dal trono">
+        <div class="game-header-actions">
+          <button id="openMakingGame" class="making-button" type="button">Dietro il gioco</button>
+        </div>
+      </header>
+
+      <div class="game-stage">
+        <section class="player-spotlight">
+          <span>ORA PRENDE PAROLA</span>
+          <h1 id="playerName" tabindex="-1"></h1>
+        </section>
+
+        <article class="question-panel" aria-live="polite" aria-atomic="true">
+          <div class="question-meta">
+            <span class="category-mark" aria-hidden="true"><img id="categorySymbol" alt=""></span>
+            <strong id="categoryName"></strong>
+          </div>
+          <p id="questionText" class="question-text"></p>
+          <div class="question-id">DOMANDA ID <strong id="questionId"></strong></div>
+        </article>
+      </div>
+      <div id="gameAnnouncement" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+      <footer class="game-controls">
+        <button id="endGame" class="danger-outline" type="button">Termina il gioco</button>
+        <button id="nextQuestion" class="primary large" type="button">Prossima domanda →</button>
+      </footer>
+    </section>
+
+    <section id="finalScreen" aria-hidden="true" class="screen end-screen" aria-labelledby="finalTitle">
+      <div class="thanks-hero">
+        <span id="finalReason" class="step-label">PARTITA CONCLUSA</span>
+        <h1 id="finalTitle">GRAZIE</h1>
+        <p id="finalText" class="human-message"></p>
+      </div>
+
+      <div class="end-grid">
+        <article class="end-card process-card">
+          <span class="card-kicker">DIETRO IL GIOCO</span>
+          <h2>Scopri come abbiamo lavorato</h2>
+          <p>Leggi il racconto del progetto e guarda le fotografie del campus Alicubi Future Creators 2026.</p>
+          <button id="openMakingFinal" class="primary" type="button">Testo e fotografie</button>
+        </article>
+
+        <article class="end-card credits-card">
+          <span class="card-kicker">AUTORI</span>
+          <h2>Un gioco costruito insieme</h2>
+          <p>Ideato, discusso, scritto, disegnato e provato dai ragazzi e dalle ragazze del campus Alicubi Future Creators 2026.</p>
+          <button id="openAuthorsFinal" class="secondary" type="button">Leggi tutti i nomi</button>
+        </article>
+      </div>
+
+      <div class="end-actions">
+        <button id="newGame" class="primary large" type="button">Nuova partita</button>
+        <button id="returnToOpening" class="text-button" type="button">Torna alla schermata iniziale</button>
+      </div>
+    </section>
+
+    <section id="makingScreen" aria-hidden="true" class="screen making-screen" aria-labelledby="makingTitle">
+      <header class="making-header">
+        <div>
+          <span class="step-label">DIETRO IL GIOCO</span>
+          <h1 id="makingTitle">Scopri come abbiamo lavorato</h1>
+        </div>
+        <button id="closeMaking" class="secondary" type="button">Torna indietro</button>
+      </header>
+
+      <article id="makingCopy" class="making-copy"></article>
+
+      <section class="gallery-section" aria-labelledby="galleryTitle">
+        <div class="gallery-title-row">
+          <span class="card-kicker">MAKING OF</span>
+          <h2 id="galleryTitle">Fotografie del laboratorio</h2>
+        </div>
+
+        <div id="galleryViewer" class="gallery-viewer" tabindex="0" aria-label="Galleria fotografica del laboratorio. Usa le frecce per cambiare immagine." aria-describedby="galleryHelp">
+          <button id="galleryPrev" class="gallery-nav" type="button" aria-label="Fotografia precedente">‹</button>
+          <figure class="gallery-main-frame">
+            <button id="openGalleryLightbox" class="gallery-image-button" type="button" aria-label="Ingrandisci la fotografia">
+              <img id="galleryImage" src="assets/gallery/full/001.webp" alt="Fotografia del laboratorio Future Creators">
+            </button>
+            <div id="galleryCount" class="gallery-count" aria-live="polite">1 / 38</div>
+          </figure>
+          <button id="galleryNext" class="gallery-nav" type="button" aria-label="Fotografia successiva">›</button>
+        </div>
+        <p id="galleryHelp" class="gallery-help">Usa le frecce, scorri con il dito oppure scegli una miniatura. Seleziona l’immagine grande per ingrandirla.</p>
+        <div id="galleryThumbs" class="gallery-thumbs" aria-label="Anteprime delle fotografie"></div>
+      </section>
+
+      <section id="authorsSection" class="authors-section" tabindex="-1">
+        <span id="authorsFormula" class="card-kicker"></span>
+        <ul id="authorsList" class="authors-list"></ul>
+      </section>
+
+      <footer class="alicubi-signature">
+        <span id="projectSignature"></span>
+        <a id="alicubiMakingLink" href="https://alicubi-milano.it" target="_blank" rel="noopener noreferrer" aria-label="Visita il sito di Alicubi">
+          <img src="assets/logos/logo-alicubi.png" alt="Alicubi">
+        </a>
+      </footer>
+    </section>
+  </main>
+
+  <div id="categoryDialog" class="dialog-backdrop hidden" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="categoryDialogTitle">
+    <div class="dialog category-dialog" tabindex="-1">
+      <span class="step-label">PROSSIMA DOMANDA</span>
+      <h2 id="categoryDialogTitle">Da quale mondo arriva?</h2>
+      <p>Scegli una categoria. Le domande già utilizzate non torneranno nella stessa partita.</p>
+      <div id="categoryGrid" class="category-grid"></div>
+      <button id="randomThisTurn" class="secondary full" type="button">La sceglie il gioco per questo turno</button>
+    </div>
+  </div>
+
+  <div id="endConfirmDialog" class="dialog-backdrop hidden" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="endConfirmTitle" aria-describedby="endConfirmCopy">
+    <div class="dialog end-confirm-dialog" tabindex="-1">
+      <span class="step-label">CONCLUDERE LA PARTITA</span>
+      <h2 id="endConfirmTitle">Vuoi concludere la partita?</h2>
+      <p id="endConfirmCopy">La domanda corrente resterà l’ultima domanda mostrata. Potrai continuare a giocare oppure terminare la partita.</p>
+      <div class="dialog-actions">
+        <button id="continueGame" class="secondary" type="button">Continua a giocare</button>
+        <button id="confirmEndGame" class="danger-solid" type="button">Termina la partita</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="galleryLightbox" class="lightbox-backdrop hidden" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-shell">
+      <h2 id="lightboxTitle" class="visually-hidden">Fotografia ingrandita</h2>
+      <button id="closeGalleryLightbox" class="lightbox-close" type="button" aria-label="Chiudi la fotografia ingrandita">×</button>
+      <button id="lightboxPrev" class="lightbox-nav previous" type="button" aria-label="Fotografia precedente">‹</button>
+      <img id="lightboxImage" src="assets/gallery/full/001.webp" alt="Fotografia del laboratorio Future Creators ingrandita">
+      <button id="lightboxNext" class="lightbox-nav next" type="button" aria-label="Fotografia successiva">›</button>
+      <div id="lightboxCount" class="lightbox-count">1 / 38</div>
+    </div>
+  </div>
+
+  <script src="data/runtime-data.js"></script>
+  <script src="js/questions-engine.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
