@@ -1,18 +1,20 @@
 {
   "title": "GIÙ DAL TRONO — test gioco V.03",
   "prototype": 3,
-  "release": "v03-revision-03",
-  "releaseDate": "2026-07-30",
-  "questions": 133,
+  "release": "v03-db-v05-mazzo-180",
+  "releaseDate": "2026-09-05",
+  "questions": 180,
   "categories": 6,
+  "questionsPerCategory": 30,
   "photos": 38,
   "backend": false,
-  "revision": 3,
+  "databaseSource": "Database_NO_KINGS_MASTER_EDITORIALE_DB-V05_MAZZO_V1_2026-08-28",
   "changes": [
-    "sottotitolo iniziale aggiornato in “Un gioco di domande per riflettere sul potere”",
-    "rimossa la piccola etichetta maiuscola “TUTTO PRONTO” sotto il logo della schermata di avvio partita",
-    "testi conclusivi aggiornati con il riferimento al campus Alicubi Future Creators 2026",
-    "firma del progetto aggiornata in “Un progetto per la comunità ideato da Alicubi”",
-    "nessuna modifica a gameplay, domande, simboli, fotografie o stato della partita"
+    "dataset aggiornato al Mazzo V1 ufficiale DB-V05",
+    "180 domande attive: 30 per ciascuna delle 6 categorie",
+    "testi presi esclusivamente dal campo Versione definitiva",
+    "selezione presa da Selezione_Mazzo_V1 = SI e Stato_patrimonio_editoriale = ATTIVA — MAZZO V1",
+    "ID stabili preservati",
+    "grafica, gameplay, simboli, fotografie e comportamento del refresh invariati"
   ]
 }
